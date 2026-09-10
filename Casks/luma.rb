@@ -12,9 +12,16 @@ cask "luma" do
 
   app "luma.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/luma.app"]
+  end
+
   caveats <<~EOS
-    Luma is distributed unsigned. Homebrew installs are normally clean, but if
-    macOS reports that the app is damaged (the quarantine flag), clear it once:
+    Luma is distributed unsigned, so macOS may flag it as "damaged" if the
+    quarantine attribute is still present when you first launch it. Homebrew
+    strips this on install; if you ever double-click a freshly downloaded
+    copy and get the warning, clear the flag with:
 
       xattr -cr /Applications/luma.app
   EOS
