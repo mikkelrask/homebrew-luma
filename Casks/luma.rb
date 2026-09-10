@@ -12,10 +12,16 @@ cask "luma" do
 
   app "luma.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/luma.app"]
+  end
+
   caveats <<~EOS
     Luma is distributed unsigned, so a copy you download yourself can be
-    blocked by Gatekeeper on first launch. Homebrew strips the quarantine
-    attribute on install, but for direct downloads run:
+    blocked by Gatekeeper on first launch. Installing via Homebrew strips
+    the quarantine attribute automatically. If you block Gatekeeper anyway,
+    or downloaded the app directly, run:
 
       xattr -cr /Applications/luma.app
   EOS
