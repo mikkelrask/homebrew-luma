@@ -4,7 +4,7 @@ cask "luma" do
   arch arm: "arm64"
 
   url "https://github.com/mikkelrask/luma-app/releases/download/v#{version}/luma-darwin-#{arch}.zip"
-  sha256 arm: "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+  sha256 arm: "d93b55be957ad85ce3c78381ad4d207cc17cc072a1a24615631186ea55773519"
 
   name "luma"
   desc "DIT asset pipeline desktop app"
